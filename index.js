@@ -22,7 +22,7 @@ client.login(process.env.TOKEN);
 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, async () => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
+	console.log(`Ready! Logged in as ${client.user.tag}`);
 	client.user.setActivity("with Amane", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands();

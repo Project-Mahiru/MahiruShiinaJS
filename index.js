@@ -87,7 +87,7 @@ client.on(Events.guildDelete, (guild) => {
 });
 
 cron.schedule('*/5 * * * *', async function() {
-    console.log("Pinging HiggingFace API");
+    console.log("Pinging HuggingFace API");
 		async function query(data) {
 		const response = await fetch(
 			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",

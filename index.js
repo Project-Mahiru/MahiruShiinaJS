@@ -1,37 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@Hobospider132 
-Hobospider132
-/
-MahiruShiinaJS
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-1
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-MahiruShiinaJS/index.js /
-@ChokunPlayZ
-ChokunPlayZ implement pinging huggingface api with setTimeout
-Latest commit 9483e78 34 minutes ago
- History
- 2 contributors
-@Hobospider132@ChokunPlayZ
-96 lines (81 sloc)  2.87 KB
-
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
 const dotenv = require('dotenv');

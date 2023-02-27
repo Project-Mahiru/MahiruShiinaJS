@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const fetch = require('@replit/node-fetch');
 const path = require('path');
+const cron = require('node-cron');
 const keepAlive = require('./server.js');
 const deployCommands = require('./deploy-commands.js');
 
@@ -88,4 +89,9 @@ client.on(Events.guildCreate, guild => {
 
 client.on(Events.guildDelete, guild => {
   console.log(`Removed from server: ${guild.name}`);
+});
+
+cron.schedule('*/5 * * * *', async function() {
+    console.log("Pinging HiggingFace API");
+	// Code Here
 });

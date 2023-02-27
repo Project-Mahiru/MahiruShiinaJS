@@ -5,28 +5,29 @@ require('dotenv').config()
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('mahiru')
-		.setDescription('Speak with Mahiru AI'),
+		.setDescription('Speak with Mahiru AI')
+    .addStringOption(option =>
+      option.setName('prompt')
+        .setDescription('Enter a prompt')
+        .setRequired(true)),
 	async execute(interaction) {
-		// ignore messages from the bot itself
-		if (interaction.user.bot) {
-			return;
-		}
-
+		const prompt = interaction.options.getString('prompt');
+	
 		// form the payload
 		const payload = {
-			inputs: {
-				text: interaction.content
+			"inputs": {
+				"text": prompt
 			}
 		};
-
-		console.log(payload)
 		
+		// console.log(payload)
+
 		const response = await fetch(
 			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",
 			{
 				method: "POST",
 				body: JSON.stringify(payload),
-				headers: { Authorization: "Bearer " + process.env.HTOKEN }
+				headers: { Authorization: "Bearer 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" }
 			}
 		);
 
@@ -34,12 +35,12 @@ module.exports = {
 		let botResponse = '';
 		if (data.hasOwnProperty('generated_text')) {
 			botResponse = data.generated_text;
-			console.log(data.generated_text)
+			// console.log(data.generated_text)
 		} else if (data.hasOwnProperty('error')) { // error condition
 			botResponse = data.error;
 			console.log(data.error);
 		}
 		// send message to channel as a reply
-		await interaction.reply(botResponse);
+		await interaction.reply("```Input was: " + prompt +"```" + botResponse);
 	}
 };

@@ -4,9 +4,11 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const fetch = require('node-fetch');
 const path = require('path');
-const deploycommand = require('./deploy-commands.js')
+const deploycommand = require('./deploy-commands.js');
+const keepAlive = require('./server.js');
 
 dotenv.config();
+keepAlive();
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -72,3 +74,4 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
+

@@ -45,6 +45,11 @@ client.once(Events.ClientReady, c => {
 	}).then((response) => {
 		console.log(JSON.stringify(response));
 	});
+	
+	setTimeout(function() {
+	    console.log("Pinging HiggingFace API");
+	    // Code Here
+	}, 30000)
 });
 
 const commandsPath = path.join(__dirname, 'commands');

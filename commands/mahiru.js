@@ -27,7 +27,7 @@ module.exports = {
 			{
 				method: "POST",
 				body: JSON.stringify(payload),
-				headers: { Authorization: "Bearer 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" }
+				headers: { Authorization: "Bearer " + process.env.HTOKEN }
 			}
 		);
 

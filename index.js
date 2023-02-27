@@ -2,9 +2,10 @@
 const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
 const dotenv = require('dotenv');
 const fs = require('fs');
-const fetch = require('node-fetch');
+const fetch = require('@replit/node-fetch');
 const path = require('path');
 const keepAlive = require('./server.js');
+const deployCommands = require('./deploy-commands.js');
 
 dotenv.config();
 keepAlive();
@@ -23,35 +24,14 @@ client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 	client.user.setActivity('with Amane', { type: ActivityType.Playing });
 	client.user.setStatus('online');
-	const guildId = client.guilds.cache.first().id;
-	
-	const commands = [];
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-	for (const file of commandFiles) {
-		const command = require(`./commands/${file}`);
-		commands.push(command.data.toJSON());
-	}
-	const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-	(async () => {
-		try {
-			console.log(`Started refreshing ${commands.length} application (/) commands.`);
-			const data = await rest.put(
-				Routes.applicationGuildCommands(process.env.clientId, guildId),
-				{ body: commands },
-			);
-	
-			console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-		} catch (error) {
-			console.error(error);
-		}
-	})();
+	deployCommands();
 	async function query(data) {
 		const response = await fetch(
 			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",
 			{
 				method: "POST",
 				body: JSON.stringify(data),
-				headers: { Authorization: "Bearer " + process.env.HTOKEN }
+				headers: { Authorization: "Bearer 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" }
 			}
 		);
 		const result = await response.json();
@@ -81,6 +61,11 @@ for (const file of commandFiles) {
 	}
 }
 
+client.on(Events.guildCreate, c => {
+  console.log(`Joined new guild: ${c.name}`);
+  updateCommands();
+});
+
 client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
@@ -93,7 +78,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true 			});
 	}
 });
 
+client.on(Events.guildCreate, guild => {
+  console.log(`Added to new server: ${guild.name}`);
+});
+
+client.on(Events.guildDelete, guild => {
+  console.log(`Removed from server: ${guild.name}`);
+});

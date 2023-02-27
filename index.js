@@ -1,6 +1,5 @@
 // Require the necessary discord.js classes
 const {Client,GatewayIntentBits,REST,Routes,ActivityType,Collection,Events,} = require("discord.js");
-const dotenv = require("dotenv");
 const fs = require("fs");
 const fetch = require("@replit/node-fetch");
 const path = require("path");
@@ -9,7 +8,7 @@ const deployCommands = require("./deploy-commands.js");
 const huggingface = require("./lib/HuggingFaceAPI");
 
 // loads .env file as enviorment varibles
-dotenv.config();
+require("dotenv").config();
 
 //comment out this line with not running on free hosting ex, replit
 keepAlive();

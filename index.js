@@ -1,3 +1,37 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@Hobospider132 
+Hobospider132
+/
+MahiruShiinaJS
+Public
+Cannot fork because you own this repository and are not a member of any organizations.
+Code
+Issues
+1
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+MahiruShiinaJS/index.js /
+@ChokunPlayZ
+ChokunPlayZ implement pinging huggingface api with setTimeout
+Latest commit 9483e78 34 minutes ago
+ History
+ 2 contributors
+@Hobospider132@ChokunPlayZ
+96 lines (81 sloc)  2.87 KB
+
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
 const dotenv = require('dotenv');
@@ -45,11 +79,6 @@ client.once(Events.ClientReady, c => {
 	}).then((response) => {
 		console.log(JSON.stringify(response));
 	});
-	
-	setTimeout(function() {
-	    console.log("Pinging HiggingFace API");
-	    // Code Here
-	}, 30000)
 });
 
 const commandsPath = path.join(__dirname, 'commands');
@@ -94,3 +123,28 @@ client.on(Events.guildCreate, guild => {
 client.on(Events.guildDelete, guild => {
   console.log(`Removed from server: ${guild.name}`);
 });
+
+	setTimeout(function() {
+	    console.log("Pinging HiggingFace API");
+	    	async function query(data) {
+		const response = await fetch(
+			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",
+			{
+				method: "POST",
+				body: JSON.stringify(data),
+				headers: { Authorization: "Bearer " + process.env.HTOKEN } // HTOKEN is my API key for HuggingFace
+			}
+		);
+		const result = await response.json();
+		return result;
+	}
+
+	query({
+		"inputs": {
+			"text": "Hello!"
+		}
+	}).then((response) => {
+		console.log(JSON.stringify(response));
+	});
+	
+	}, 30000)

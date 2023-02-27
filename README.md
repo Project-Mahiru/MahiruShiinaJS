@@ -14,7 +14,7 @@ discord.js v.14
 TODO:
 
 - [ ] Finish dataset 
-- [ ] Find a way to ping HuggingFace model every 5 minutes, (maybe look into a time.sleep equivalent) 
+- [x] Find a way to ping HuggingFace model every 5 minutes, (maybe look into a time.sleep equivalent) 
 - [ ] Get a database and append all chat history to it (maybe try brain browser or mongodb)
 - [ ] Figure out a way to load a database to HuggingFace model
 

@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const fetch = require('node-fetch');
 const path = require('path');
-const deploycommand = require('./deploy-commands.js');
 const keepAlive = require('./server.js');
 
 dotenv.config();
@@ -19,10 +18,33 @@ client.login(process.env.TOKEN);
 
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
+
 client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 	client.user.setActivity('with Amane', { type: ActivityType.Playing });
 	client.user.setStatus('online');
+	const guildId = client.guilds.cache.first().id;
+	
+	const commands = [];
+	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const command = require(`./commands/${file}`);
+		commands.push(command.data.toJSON());
+	}
+	const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+	(async () => {
+		try {
+			console.log(`Started refreshing ${commands.length} application (/) commands.`);
+			const data = await rest.put(
+				Routes.applicationGuildCommands(process.env.clientId, guildId),
+				{ body: commands },
+			);
+	
+			console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		} catch (error) {
+			console.error(error);
+		}
+	})();
 	async function query(data) {
 		const response = await fetch(
 			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",

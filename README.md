@@ -8,9 +8,9 @@ Written in JS in case Oleg is willing to merge it with the current Mahiru bot. H
 
 Required modules: 
 
-discord.js v.14
-@replit/node-fetch latest version
-node-cron
+`discord.js v.14`
+`@replit/node-fetch`
+`node-cron`
 
 Thanks to:
 

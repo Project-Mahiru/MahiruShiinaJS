@@ -12,6 +12,11 @@ discord.js v.14
 @replit/node-fetch latest version
 node-cron
 
+Thanks to:
+
+Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset
+Winword.zip and Akshayan Singla for helping out with the code
+
 TODO:
 
 - [ ] Finish dataset 

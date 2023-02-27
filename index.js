@@ -3,6 +3,7 @@ const {Client,GatewayIntentBits,REST,Routes,ActivityType,Collection,Events,} = r
 const fs = require("fs");
 const fetch = require("@replit/node-fetch");
 const path = require("path");
+const cron = require('node-cron');
 const keepAlive = require("./server.js");
 const deployCommands = require("./deploy-commands.js");
 const huggingface = require("./lib/HuggingFaceAPI");
@@ -82,4 +83,27 @@ client.on(Events.guildCreate, (guild) => {
 });
 client.on(Events.guildDelete, (guild) => {
 	console.log(`Removed from server: ${guild.name}`);
+});
+
+cron.schedule('*/5 * * * *', async function() {
+    console.log("Pinging HiggingFace API");
+		async function query(data) {
+		const response = await fetch(
+			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",
+			{
+				method: "POST",
+				body: JSON.stringify(data),
+				headers: { Authorization: "Bearer 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" } // HTOKEN is my API key for HuggingFace
+			}
+		);
+		const result = await response.json();
+		return result;
+	}
+	query({
+		"inputs": {
+			"text": "Hello!"
+		}
+	}).then((response) => {
+		console.log(JSON.stringify(response));
+	});
 });

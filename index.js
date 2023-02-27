@@ -1,12 +1,13 @@
 // Require the necessary discord.js classes
-const {Client,GatewayIntentBits,REST,Routes,ActivityType,Collection,Events,} = require("discord.js");
-const fs = require("fs");
-const fetch = require("@replit/node-fetch");
-const path = require("path");
+
+const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
+const dotenv = require('dotenv');
+const fs = require('fs');
+const fetch = require('@replit/node-fetch');
+const path = require('path');
 const cron = require('node-cron');
-const keepAlive = require("./server.js");
-const deployCommands = require("./deploy-commands.js");
-const huggingface = require("./lib/HuggingFaceAPI");
+const keepAlive = require('./server.js');
+const deployCommands = require('./deploy-commands.js');
 
 // loads .env file as enviorment varibles
 require("dotenv").config();

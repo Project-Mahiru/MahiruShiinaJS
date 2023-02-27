@@ -10,6 +10,7 @@ Required modules:
 
 discord.js v.14
 @replit/node-fetch latest version
+node-cron
 
 TODO:
 

@@ -12,9 +12,14 @@ discord.js v.14
 @replit/node-fetch latest version
 node-cron
 
+Thanks to:
+
+Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset
+Winword.zip and Akshayan Singla for helping out with the code
+
 TODO:
 
-- [] Finish dataset 
+- [ ] Finish dataset 
 - [x] Find a way to ping HuggingFace model every 5 minutes, (maybe look into a time.sleep equivalent) 
 - [ ] Get a database and append all chat history to it (maybe try brain browser or mongodb)
 - [ ] Figure out a way to load a database to HuggingFace model

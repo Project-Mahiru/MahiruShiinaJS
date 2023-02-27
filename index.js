@@ -31,7 +31,7 @@ client.once(Events.ClientReady, c => {
 			{
 				method: "POST",
 				body: JSON.stringify(data),
-				headers: { Authorization: "Bearer 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" }
+				headers: { Authorization: "Bearer " + process.env.HTOKEN } // HTOKEN is my API key for HuggingFace
 			}
 		);
 		const result = await response.json();

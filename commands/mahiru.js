@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fetch = require('node-fetch');
+const huggingface = require('../lib/HuggingFaceAPI');
 require('dotenv').config()
 
 module.exports = {
@@ -12,26 +13,13 @@ module.exports = {
         .setRequired(true)),
 	async execute(interaction) {
 		const prompt = interaction.options.getString('prompt');
-	
-		// form the payload
-		const payload = {
-			"inputs": {
-				"text": prompt
-			}
-		};
-		
-		// console.log(payload)
 
-		const response = await fetch(
-			"https://api-inference.huggingface.co/models/Hobospider132/DialoGPT-Mahiru-Proto",
-			{
-				method: "POST",
-				body: JSON.stringify(payload),
-				headers: { Authorization: "Bearer " + process.env.HTOKEN }
-			}
-		);
+		const data = await huggingface.query({
+			inputs: {
+				text: prompt,
+			},
+		});
 
-		const data = await response.json();
 		let botResponse = '';
 		if (data.hasOwnProperty('generated_text')) {
 			botResponse = data.generated_text;

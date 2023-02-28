@@ -14,8 +14,8 @@ Required modules:
 
 Thanks to:
 
-Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset  
-Winword.zip and Akshayan Singla for helping out with the code  
+- Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset  
+- Winword.zip and Akshayan Singla for helping out with the code  
 
 TODO:
 

@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const huggingface = require('../lib/HuggingFaceAPI');
+const query = require('../lib/HuggingFaceAPI');
 require('dotenv').config()
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
 	async execute(interaction) {
 		const prompt = interaction.options.getString('prompt');
 
-		const data = await huggingface.query({
+		const data = await query({
 			inputs: {
 				text: prompt,
 			},

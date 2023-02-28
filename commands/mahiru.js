@@ -21,7 +21,7 @@ module.exports = {
 
 		let botResponse = '';
 		if (data.hasOwnProperty('generated_text')) {
-			botResponse = data.generated_text;
+			botResponse = data.generated_text.replace(/<@[^>]+>/g, '<removed>');
 			// console.log(data.generated_text)
 		} else if (data.hasOwnProperty('error')) { // error condition
 			botResponse = data.error;

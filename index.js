@@ -66,5 +66,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
 // On Joining a new Server do:
 client.on(Events.GuildCreate, async () => {
 	console.log('Added to new server, Deploying commands');
-	deployCommands();
+	await deployCommands(client);
 });

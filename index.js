@@ -25,23 +25,10 @@ client.login(process.env.TOKEN);
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, async () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
-	client.user.setActivity("with Amane", { type: ActivityType.Playing });
+	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands();
-
-	setTimeout(function () {
-		console.log("Pinging HuggingFace API");
-		huggingface.query({
-			inputs: {
-				text: "Hello!",
-			},
-		})
-		.then((response) => {
-			console.log(JSON.stringify(response));
-		});
-	}, 30000);
-});
-
+	
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
 	.readdirSync(commandsPath)

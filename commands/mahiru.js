@@ -21,13 +21,13 @@ module.exports = {
 
 		let botResponse = '';
 		if (data.hasOwnProperty('generated_text')) {
-			botResponse = data.generated_text.replace(/<@[^>]+>/g, '<removed>');
+			botResponse = data.generated_text;
 			// console.log(data.generated_text)
 		} else if (data.hasOwnProperty('error')) { // error condition
 			botResponse = data.error;
 			console.log(data.error);
 		}
 		// send message to channel as a reply
-		await interaction.reply("```Input was: " + prompt +"```" + botResponse);
+		await interaction.reply(`\`\`\`Input was: ${prompt}\`\`\`${botResponse}`.replace(/<@[^>]+>/g, '<removed>'));
 	}
 };

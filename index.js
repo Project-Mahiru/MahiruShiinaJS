@@ -4,13 +4,13 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const fetch = require('@replit/node-fetch');
 const path = require('path');
-const keepAlive = require('./server.js');
 const deployCommands = require('./deploy-commands.js');
 
 // loads .env file as enviorment varibles
 require("dotenv").config();
 
 //comment out this line with not running on free hosting ex, replit
+const keepAlive = require('./server.js');
 keepAlive();
 
 // Create a new client instance

@@ -5,7 +5,7 @@ const fs = require('fs');
 const fetch = require('@replit/node-fetch');
 const path = require('path');
 const deployCommands = require('./deploy-commands.js');
-const query = require('../lib/HuggingFaceAPI.js')
+const query = require('./lib/HuggingFaceAPI.js');
 
 // loads .env file as enviorment varibles
 require("dotenv").config();
@@ -27,7 +27,18 @@ client.once(Events.ClientReady, async () => {
 	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands(client);
+	prompt = 'Hello!';
+	const data = await query({
+		inputs: {
+			text: prompt,
+		},
+	});
 
+	if (data.hasOwnProperty('generated_text')) {
+		console.log(data.generated_text)
+	} else if (data.hasOwnProperty('error')) { // error condition
+		console.log(data.error);
+	}
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs
 		.readdirSync(commandsPath)

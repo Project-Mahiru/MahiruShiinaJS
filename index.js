@@ -27,7 +27,7 @@ client.once(Events.ClientReady, async () => {
 	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands(client);
-	await query('Hello!');
+
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs
 		.readdirSync(commandsPath)

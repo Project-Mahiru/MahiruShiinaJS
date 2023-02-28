@@ -64,10 +64,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 // On Joining a new Server do:
-client.on(Events.guildCreate, (guild) => {
+client.on(Events.GuildCreate, (guild) => {
 	console.log(`Added to new server: ${guild.name}`);
+	deployCommands();
 });
 // On Leaving a Server do:
-client.on(Events.guildDelete, (guild) => {
+client.on(Events.GuildDelete, (guild) => {
 	console.log(`Removed from server: ${guild.name}`);
 });

@@ -5,7 +5,7 @@ const fs = require('fs');
 const fetch = require('@replit/node-fetch');
 const path = require('path');
 const deployCommands = require('./deploy-commands.js');
-const query = require('./lib/HuggingFaceAPI.js')
+const query = require('../lib/HuggingFaceAPI.js')
 
 // loads .env file as enviorment varibles
 require("dotenv").config();

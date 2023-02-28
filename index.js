@@ -1,21 +1,11 @@
 // Require the necessary discord.js classes
-
-const {
-	Client,
-	GatewayIntentBits,
-	REST,
-	Routes,
-	ActivityType,
-	Collection,
-	Events,
-} = require("discord.js");
-const dotenv = require("dotenv");
-const fs = require("fs");
-const fetch = require("@replit/node-fetch");
-const path = require("path");
-const cron = require("node-cron");
-const keepAlive = require("./server.js");
-const deployCommands = require("./deploy-commands.js");
+const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
+const dotenv = require('dotenv');
+const fs = require('fs');
+const fetch = require('@replit/node-fetch');
+const path = require('path');
+const keepAlive = require('./server.js');
+const deployCommands = require('./deploy-commands.js');
 
 // loads .env file as enviorment varibles
 require("dotenv").config();
@@ -80,18 +70,4 @@ client.on(Events.guildCreate, (guild) => {
 // On Leaving a Server do:
 client.on(Events.guildDelete, (guild) => {
 	console.log(`Removed from server: ${guild.name}`);
-});
-
-// Ping Hugging Face API every 5 minutes using node-cron
-cron.schedule("*/5 * * * *", async function () {
-	console.log("Pinging HuggingFace API");
-	await huggingface
-		.query({
-			inputs: {
-				text: prompt,
-			},
-		})
-		.then((response) => {
-			console.log(JSON.stringify(response));
-		});
 });

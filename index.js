@@ -25,7 +25,7 @@ client.once(Events.ClientReady, async () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
 	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
-	await deployCommands();
+	await deployCommands(client);
 
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs

@@ -6,7 +6,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { REST, Routes } = require("discord.js");
 
-async function deployCommands() {
+async function deployCommands(client) {
     const commands = [];
     const commandFiles = fs
         .readdirSync("./commands")
@@ -21,7 +21,7 @@ async function deployCommands() {
             `Started refreshing ${commands.length} application (/) commands.`
         );
         const data = await rest.put(
-            Routes.applicationCommands(process.env.clientId),
+            Routes.applicationCommands(client.user.id),
             { body: commands }
         );
 

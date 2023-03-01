@@ -5,7 +5,7 @@ By Hobospider132
 
 This code uses the huggingface API to talk to Mahiru AI and is built off DialoGPT as well as the dialogue from Otonari no Tenshi-sama  
 Written in JS in case Oleg is willing to merge it with the current Mahiru bot. Hosted with UptimeRobot at the moment.  
-Python version: https://github.com/Hobospider132/MahiruShiinaPy
+[Python version](https://github.com/Hobospider132/MahiruShiinaPy).
 
 Required modules: 
 

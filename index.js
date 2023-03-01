@@ -13,7 +13,7 @@ const fetch = require("@replit/node-fetch");
 const path = require("path");
 const deployCommands = require("./deploy-commands.js");
 const dockerChecker = require("./lib/dockerChecker");
-const query = require("./lib/huggingFaceAPI.js");
+const query = require("./lib/HuggingFaceAPI.js");
 
 // if not running on docker
 if (dockerChecker()) {

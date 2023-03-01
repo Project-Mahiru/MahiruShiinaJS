@@ -14,7 +14,13 @@ Required modules:
 Thanks to:
 
 - Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset  
-- Winword.zip and Akshayan Singla for helping out with the code  
+- Winword.zip, Tech. TTGames and Akshayan Singla for helping out with the code  
+
+Special thanks to:
+
+- Sleeping Italian for carrying the dataset
+- Winword.zip for improvement and debugging of code 
+- Tech. TTGames for providing template code for Python version
 
 TODO:
 

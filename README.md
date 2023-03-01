@@ -16,6 +16,7 @@ Thanks to:
 
 - Sleeping Italian, Singaporean child and Mahiru Shiina for helping out with making the dataset  
 - Winword.zip, Tech. TTGames and Akshayan Singla for helping out with the code  
+- Everyone else who helped out with the dataset 
 
 Special thanks to:
 

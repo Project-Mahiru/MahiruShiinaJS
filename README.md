@@ -29,5 +29,5 @@ TODO:
 - [ ] Get a database and append all chat history to it (maybe try brain browser or mongodb)
 - [ ] Figure out a way to load a database to HuggingFace model
 - [x] add Dockerfile
-- [ ] add a way to disable keepalive server when not running on replit
-- [ ] add a way to load enviorment varible from docker stuff instead when running on docker
+- [x] add a way to disable keepalive server when not running on replit
+- [x] add a way to load enviorment varible from docker stuff instead when running on docker

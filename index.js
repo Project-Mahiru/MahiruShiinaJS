@@ -1,18 +1,36 @@
 // Require the necessary discord.js classes
-const { Client, GatewayIntentBits, REST, Routes, ActivityType, Collection, Events } = require('discord.js');
-const dotenv = require('dotenv');
-const fs = require('fs');
-const fetch = require('@replit/node-fetch');
-const path = require('path');
-const deployCommands = require('./deploy-commands.js');
-const query = require('./lib/HuggingFaceAPI.js');
+const {
+	Client,
+	GatewayIntentBits,
+	REST,
+	Routes,
+	ActivityType,
+	Collection,
+	Events,
+} = require("discord.js");
+const fs = require("fs");
+const fetch = require("@replit/node-fetch");
+const path = require("path");
+const deployCommands = require("./deploy-commands.js");
+const dockerChecker = require("./lib/dockerChecker");
+const query = require("./lib/huggingFaceAPI.js");
 
-// loads .env file as enviorment varibles
-require("dotenv").config();
+// if not running on docker
+if (dockerChecker()) {
+	console.log("Docker Detected, will load varible from Docker envs")
+} else {
+	// loads .env file as enviorment varibles
+	require("dotenv").config();
+}
 
-//comment out this line with not running on free hosting ex, replit
-const keepAlive = require('./server.js');
-keepAlive();
+// enable keepalive
+if (process.env.ENABLE_KEEPALIVE) {
+	const keepAlive = require("./server.js");
+	keepAlive();
+} else {
+	//comment out this line if not running on free hosting ex, replit
+	console.warn('Keepalive is Disabled, if you wish to enable it please add "ENABLE_KEEPALIVE=TRUE" to your .env file')
+}
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -27,16 +45,17 @@ client.once(Events.ClientReady, async () => {
 	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands(client);
-	prompt = 'Hello!';
+	prompt = "Hello!";
 	const data = await query({
 		inputs: {
 			text: prompt,
 		},
 	});
 
-	if (data.hasOwnProperty('generated_text')) {
-		console.log(data.generated_text)
-	} else if (data.hasOwnProperty('error')) { // error condition
+	if (data.hasOwnProperty("generated_text")) {
+		console.log(data.generated_text);
+	} else if (data.hasOwnProperty("error")) {
+		// error condition
 		console.log(data.error);
 	}
 	const commandsPath = path.join(__dirname, "commands");
@@ -77,6 +96,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
 // On Joining a new Server do:
 client.on(Events.GuildCreate, async () => {
-	console.log('Added to new server, Deploying commands');
+	console.log("Added to new server, Deploying commands");
 	await deployCommands(client);
 });

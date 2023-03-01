@@ -4,7 +4,7 @@ The code for Mahiru Shiina discord bot AI
 By Hobospider132
 
 This code uses the huggingface API to talk to Mahiru AI and is built off DialoGPT as well as the dialogue from Otonari no Tenshi-sama  
-Written in JS in case Oleg is willing to merge it with the current Mahiru bot. Hosted with UptimeRobot at the moment. Added a Python version because... uh... I forgot why we added it 💀 (It was added for simplicity as discord.py is more... flexible? Also Python is easier to understand)
+Written in JS in case Oleg is willing to merge it with the current Mahiru bot. Hosted with UptimeRobot at the moment. Python version: https://github.com/Hobospider132/MahiruShiinaPy
 
 Required modules: 
 
@@ -20,7 +20,6 @@ Special thanks to:
 
 - Sleeping Italian for carrying the dataset
 - Winword.zip for improvement and debugging of code 
-- Tech. TTGames for providing template code for Python version
 
 TODO:
 

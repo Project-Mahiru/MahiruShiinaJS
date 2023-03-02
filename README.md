@@ -26,8 +26,6 @@ Special thanks to:
 TODO:
 
 - [ ] Finish dataset 
-- [ ] Get a database and append all chat history to it (maybe try brain browser or mongodb)
-- [ ] Figure out a way to load a database to HuggingFace model
 - [x] add Dockerfile
 - [x] add a way to disable keepalive server when not running on replit
 - [x] add a way to load enviorment varible from docker stuff instead when running on docker

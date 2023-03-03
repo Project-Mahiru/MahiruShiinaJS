@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const query = require('../lib/HuggingFaceAPI');
+const query = require('../lib/huggingFaceAPI');
 require('dotenv').config()
 
 module.exports = {

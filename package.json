@@ -4,7 +4,8 @@
   "description": "Mahiru Shinna (aka. The Angel) JS Discord Chat bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Hobospider132",
@@ -16,5 +17,16 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "node-fetch": "^3.2.6"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hobospider132/MahiruShiinaJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hobospider132/MahiruShiinaJS/issues"
+  },
+  "homepage": "https://github.com/Hobospider132/MahiruShiinaJS#readme"
 }

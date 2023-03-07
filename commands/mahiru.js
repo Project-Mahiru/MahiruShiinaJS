@@ -10,7 +10,7 @@ module.exports = {
       option.setName('prompt')
         .setDescription('Enter a prompt')
         .setRequired(true)),
-	async execute(interaction) {
+	async execute(client, interaction) {
 		const prompt = interaction.options.getString('prompt');
 
 		const data = await query({

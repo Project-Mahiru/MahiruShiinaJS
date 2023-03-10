@@ -104,13 +104,13 @@ module.exports = {
             inline: true,
           },
           {
-            name: "💾 Disk Space -- Stats",
-            value: `\`\`\`\yml\nTotal Disk Space: ${(
+            name: "💾 Memory -- Stats",
+            value: `\`\`\`\yml\nTotal Memory: ${(
               os.totalmem() /
               1024 /
               1024 /
               1024
-            ).toFixed(2)} GB\nFree Disk Space: ${(
+            ).toFixed(2)} GB\nFree Memory: ${(
               os.freemem() /
               1024 /
               1024 /

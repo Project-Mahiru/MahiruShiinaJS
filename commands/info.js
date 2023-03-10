@@ -80,7 +80,7 @@ module.exports = {
           },
           {
             name: "💿 System -- Stats",
-            value: `\`\`\`\yml\nOS: Linux | Debian\nCPU Usage: ${percent.toFixed(
+            value: `\`\`\`\yml\nOS: ${process.platform}\nCPU Usage: ${percent.toFixed(
               2
             )} %\nRAM Usage: ${(
               process.memoryUsage().heapUsed /

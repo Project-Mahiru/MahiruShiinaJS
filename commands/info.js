@@ -38,6 +38,7 @@ module.exports = {
     .setName("info")
     .setDescription("get serverinfo"),
   async execute(client, interaction) {
+
     const cpuUsage = process.cpuUsage();
     const cores = os.cpus().length;
     const uptimeSeconds = process.uptime();
@@ -80,7 +81,7 @@ module.exports = {
           },
           {
             name: "💿 System -- Stats",
-            value: `\`\`\`\yml\nOS: ${process.platform}\nCPU Usage: ${percent.toFixed(
+            value: `\`\`\`\yml\nPlatform: ${os.type()}\nCPU Usage: ${percent.toFixed(
               2
             )} %\nRAM Usage: ${(
               process.memoryUsage().heapUsed /

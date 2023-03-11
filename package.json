@@ -11,8 +11,8 @@
   "author": "Hobospider132",
   "license": "ISC",
   "dependencies": {
-    "@replit/node-fetch": "^3.1.0",
     "@types/node": "^18.0.6",
+    "axios": "^1.3.4",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

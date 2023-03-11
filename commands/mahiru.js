@@ -13,20 +13,9 @@ module.exports = {
 	async execute(client, interaction) {
 		const prompt = interaction.options.getString('prompt');
 
-		const data = await query({
-			inputs: {
-				text: prompt,
-			},
-		});
+		const data = await query(prompt);
 
-		let botResponse = '';
-		if (data.hasOwnProperty('generated_text')) {
-			botResponse = data.generated_text;
-			// console.log(data.generated_text)
-		} else if (data.hasOwnProperty('error')) { // error condition
-			botResponse = data.error;
-			console.log(data.error);
-		}
+		let botResponse = data;
 		// send message to channel as a reply
 		await interaction.reply(`\`\`\`Input was: ${prompt}\`\`\`${botResponse}`.replace(/<@[^>]+>/g, '<removed>'));
 	}

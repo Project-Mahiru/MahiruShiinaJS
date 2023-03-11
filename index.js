@@ -32,6 +32,10 @@ if (process.env.ENABLE_KEEPALIVE) {
 	console.warn('Keepalive is Disabled, if you wish to enable it please add "ENABLE_KEEPALIVE=TRUE" to your .env file')
 }
 
+if (process.env.LOCALAPI) {
+	console.log('Local API Base URL is present, the bot will use the local API from now on')
+}
+
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -46,18 +50,8 @@ client.once(Events.ClientReady, async () => {
 	client.user.setStatus("online");
 	await deployCommands(client);
 	prompt = "Hello!";
-	const data = await query({
-		inputs: {
-			text: prompt,
-		},
-	});
-
-	if (data.hasOwnProperty("generated_text")) {
-		console.log(data.generated_text);
-	} else if (data.hasOwnProperty("error")) {
-		// error condition
-		console.log(data.error);
-	}
+	const data = await query(prompt);
+    console.log(data);
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs
 		.readdirSync(commandsPath)

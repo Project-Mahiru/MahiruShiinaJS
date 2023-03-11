@@ -2,14 +2,11 @@
 const {
 	Client,
 	GatewayIntentBits,
-	REST,
-	Routes,
 	ActivityType,
 	Collection,
 	Events,
 } = require("discord.js");
 const fs = require("fs");
-const fetch = require("@replit/node-fetch");
 const path = require("path");
 const deployCommands = require("./deploy-commands.js");
 const dockerChecker = require("./lib/dockerChecker");

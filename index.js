@@ -90,3 +90,17 @@ client.on(Events.GuildCreate, async () => {
 	console.log("Added to new server, Deploying commands");
 	await deployCommands(client);
 });
+
+process.on('unhandledRejection', (reason, p) => {
+    console.log('=== unhandled Rejection ==='.toUpperCase().yellow.dim);
+    console.log('Reason:\n ', reason.stack ? String(reason.stack).gray : String(reason).gray);
+    console.log('=== unhandled Rejection ==='.toUpperCase().yellow.dim);
+});
+process.on("uncaughtException", (err, origin) => {
+    console.log('=== uncaught Exception ==='.toUpperCase().yellow.dim);
+    console.log('Exception:\n ', err.stack ? err.stack : err)
+    console.log('=== uncaught Exception ==='.toUpperCase().yellow.dim);
+})
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+    console.log('=== uncaught Exception Monitor ==='.toUpperCase().yellow.dim);
+});

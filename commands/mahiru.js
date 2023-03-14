@@ -23,7 +23,7 @@ module.exports = {
 			await interaction.editReply(`\`\`\`Input was: ${prompt}\`\`\`${botResponse}`.replace(/<@[^>]+>/g, '<removed>'));
 		} catch (error) {
 			console.error(error);
-			if (error.message.includes("ECONNREFUSED")) {
+			if (error.message.includes("ECONNREFUSED") || error.message.includes("EHOSTUNREACH")) {
 			  await interaction.editReply("Looks like the mahiru is sleeping, please come back when she's awake.");
 			} else {
 			  await interaction.editReply(`An error occurred: ${error.message}`);

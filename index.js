@@ -46,9 +46,16 @@ client.once(Events.ClientReady, async () => {
 	client.user.setActivity("with Chitose", { type: ActivityType.Playing });
 	client.user.setStatus("online");
 	await deployCommands(client);
-	prompt = "Hello!";
-	const data = await query(prompt);
-    console.log(data);
+	try {
+		let prompt = "Hello";
+
+		const data = await query(prompt);
+
+		console.log(data);
+	} catch (error) {
+		console.error(error);
+		await interaction.editReply(`An error occurred: ${error.message}`);
+	}
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs
 		.readdirSync(commandsPath)

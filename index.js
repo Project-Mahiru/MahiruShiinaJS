@@ -54,7 +54,6 @@ client.once(Events.ClientReady, async () => {
 		console.log(data);
 	} catch (error) {
 		console.error(error);
-		await interaction.editReply(`An error occurred: ${error.message}`);
 	}
 	const commandsPath = path.join(__dirname, "commands");
 	const commandFiles = fs

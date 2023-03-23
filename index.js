@@ -99,15 +99,15 @@ client.on(Events.GuildCreate, async () => {
 });
 
 process.on('unhandledRejection', (reason, p) => {
-    console.log('=== unhandled Rejection ==='.toUpperCase().yellow.dim);
-    console.log('Reason:\n ', reason.stack ? String(reason.stack).gray : String(reason).gray);
-    console.log('=== unhandled Rejection ==='.toUpperCase().yellow.dim);
+    console.log('=== unhandled Rejection ==='.toUpperCase());
+    console.log('Reason:\n ', reason.stack ? String(reason.stack) : String(reason));
+    console.log('=== unhandled Rejection ==='.toUpperCase());
 });
 process.on("uncaughtException", (err, origin) => {
-    console.log('=== uncaught Exception ==='.toUpperCase().yellow.dim);
+    console.log('=== uncaught Exception ==='.toUpperCase());
     console.log('Exception:\n ', err.stack ? err.stack : err)
-    console.log('=== uncaught Exception ==='.toUpperCase().yellow.dim);
+    console.log('=== uncaught Exception ==='.toUpperCase());
 })
 process.on('uncaughtExceptionMonitor', (err, origin) => {
-    console.log('=== uncaught Exception Monitor ==='.toUpperCase().yellow.dim);
+    console.log('=== uncaught Exception Monitor ==='.toUpperCase());
 });
